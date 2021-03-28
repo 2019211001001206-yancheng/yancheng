@@ -3,6 +3,42 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+    <!-- within web-app,for all servlet and jsp in this project -->
+    <!--using SQL Server db,i want to change mysql db-->
+    <!--<context-param>
+        <param-name>driver</param-name>
+        <param-value>com.microsoft.sqlserver.jdbc.SQLServerDriver</param-value>
+    </context-param>
+    <context-param>
+        <param-name>url</param-name>
+        <param-value>jdbc:sqlserver://localhost;databaseName=MDSK;</param-value>
+    </context-param>
+    <context-param>
+        <param-name>username</param-name>
+        <param-value>sa</param-value>
+    </context-param>
+    <context-param>
+        <param-name>password</param-name>
+        <param-value>YanLaoBan</param-value>
+    </context-param>
+   -->
+    <!--use mysql-->
+    <context-param>
+        <param-name>driver</param-name>
+        <param-value>com.mysql.cj.jdbc.Driver</param-value>
+    </context-param>
+    <context-param>
+        <param-name>url</param-name>
+        <param-value>jdbc:mysql://localhost;3306/MDSK</param-value>
+    </context-param>
+    <context-param>
+        <param-name>username</param-name>
+        <param-value>root</param-value>
+    </context-param>
+    <context-param>
+        <param-name>password</param-name>
+        <param-value>root</param-value>
+    </context-param>
     <!--add code about new servlet-->
     <servlet>
         <servlet-name>anyName</servlet-name><!-- give any name -->
@@ -17,6 +53,38 @@
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>com.yancheng.week3.demo.RegisterServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>JDBCDemoServlet</servlet-name>
+        <servlet-class>com.yancheng.week4.demo.JDBCDemoServlet</servlet-class>
+
+        <!--//String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+          //String url = "jdbc:sqlserver://localhost;databaseName=MDSK;";
+          //String username = "sa";
+          //String password = "YanLaoBan";-->
+        <!-- set in web.xml as config parameter , for only one servlet , JDBCDemoServlet-->
+        <init-param>
+            <param-name>driver</param-name>
+            <param-value>com.microsoft.sqlserver.jdbc.SQLServerDriver</param-value>
+        </init-param>
+        <init-param>
+            <param-name>url</param-name>
+            <param-value>jdbc:sqlserver://localhost;databaseName=MDSK;</param-value>
+        </init-param>
+        <init-param>
+            <param-name>username</param-name>
+            <param-value>sa</param-value>
+        </init-param>
+        <init-param>
+            <param-name>password</param-name>
+            <param-value>YanLaoBan</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+        <!--load and call init() when tomcat start -->
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JDBCDemoServlet</servlet-name>
+        <url-pattern>/jdbc</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>anyName</servlet-name>
         <url-pattern>/hello</url-pattern><!-- url must start with / -->
