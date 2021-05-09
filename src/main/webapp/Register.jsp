@@ -1,5 +1,5 @@
 
-<%@include file="header.jsp" %>
+<%@include file="views/header.jsp" %>
 <html>
 <head>
     <title>register</title>
@@ -26,4 +26,4 @@
 </form>
 </body>
 </html>
-<%@include file="footer.jsp" %>
+<%@include file="views/footer.jsp" %>
