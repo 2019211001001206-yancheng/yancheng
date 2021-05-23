@@ -1,13 +1,9 @@
 package com.yancheng.dao;
-
 import com.yancheng.model.Product;
-
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
-
-
 
 public interface IProductDao {
     /**
@@ -56,4 +52,6 @@ public interface IProductDao {
      * @return List of product
      */
     public List<Product> getPicture(Integer productId, Connection con) throws SQLException;
+
+    byte[] getPictureById(Integer productId, Connection con) throws SQLException;
 }
